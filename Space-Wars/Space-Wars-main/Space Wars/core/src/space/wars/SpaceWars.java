@@ -14,10 +14,11 @@ public class SpaceWars extends ApplicationAdapter {
 	OrthographicCamera camera = new OrthographicCamera();
 	public static SpriteBatch batch;
 	public SpaceShip ship;
+	public static int overheat;
 
 	public void create() {
 		debugRenderer = new Box2DDebugRenderer(true, true, false, false, true, false);
-		camera.setToOrtho(false,240, 240);
+		camera.setToOrtho(true,240, 240);
 		world = new World(new Vector2(0, 0), true);
 		batch = new SpriteBatch();
 
@@ -34,7 +35,9 @@ public class SpaceWars extends ApplicationAdapter {
 		batch.begin();
 		Gun.shoot(ship);
 		batch.end();
-
+		if(overheat > 0){
+			overheat = overheat-1;
+		}
 		debugRenderer.render(world, camera.combined);
 
 	}
