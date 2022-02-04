@@ -1,2 +1,0 @@
-space/wars/SpaceWars.java
- space.wars.SpaceWars
