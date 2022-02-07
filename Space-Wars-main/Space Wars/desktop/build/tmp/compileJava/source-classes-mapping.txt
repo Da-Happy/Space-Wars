@@ -1,2 +1,0 @@
-space/wars/desktop/DesktopLauncher.java
- space.wars.desktop.DesktopLauncher
