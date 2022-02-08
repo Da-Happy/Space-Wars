@@ -16,31 +16,36 @@ public class SpaceWars extends ApplicationAdapter {
 	OrthographicCamera camera = new OrthographicCamera();
 	public static SpriteBatch batch;
 	public SpaceShip ship;
+	public SpaceShip ship2;
 	public static int overheat;
+	public static int overheat2;
 
 	public void create() {
 		debugRenderer = new Box2DDebugRenderer(true, true, false, false, true, false);
-		camera.setToOrtho(true,1000, 1000);
+		camera.setToOrtho(true,300, 300);
 		world = new World(new Vector2(0, 0), true);
 		batch = new SpriteBatch();
 		int centerX = round(camera.viewportWidth/2);
 		int centerY = round(camera.viewportHeight/2);
-		ship = new SpaceShip(centerX,centerY);
-
+		ship = new SpaceShip(centerX+centerX/2,centerY);
+		ship2 = new SpaceShip(centerX-centerX/2, centerY);
 	}
 
 	public void render () {
 		ScreenUtils.clear(0, 0, 0, 1);
-
 		world.step(1/60f, 6, 2);
-
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		fixedgunlol.shewt(ship);
-		moveit.move(ship);
+		fixedgunlol.shewt(ship,true);
+		moveit.move(ship,true);
+		fixedgunlol.shewt(ship2,false);
+		moveit.move(ship2,false);
 		batch.end();
 		if(overheat > 0){
 			overheat = overheat-1;
+		}
+		if(overheat2 > 0){
+			overheat2 = overheat2-1;
 		}
 		debugRenderer.render(world, camera.combined);
 
