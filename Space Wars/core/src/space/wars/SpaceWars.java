@@ -22,7 +22,7 @@ public class SpaceWars extends ApplicationAdapter {
 
 	public void create() {
 		debugRenderer = new Box2DDebugRenderer(true, true, false, false, true, false);
-		camera.setToOrtho(true,300, 300);
+		camera.setToOrtho(true,500, 500);
 		world = new World(new Vector2(0, 0), true);
 		batch = new SpriteBatch();
 		int centerX = round(camera.viewportWidth/2);

@@ -17,6 +17,6 @@ public class Bullet {
         this.angularVelocity = meMath.normalize(direction,speed);
         bodyDef.position.set(pos);
         this.body = SpaceWars.world.createBody(bodyDef);
-        this.bullet = new EasyCircle(1,0,0,1f,0.1f,body);
+        this.bullet = new EasyCircle(1,0,0,1f,1f,body);
     }
 }
