@@ -10,13 +10,17 @@ public class Bullet {
     BodyDef bodyDef;
     Vector2 angularVelocity;
 
-    public Bullet(Vector2 pos, Vector2 direction, float speed) {
+    public Bullet(Vector2 pos, float speed) {
         this.bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.bullet = true;
-        this.angularVelocity = meMath.normalize(direction,speed);
+        this.angularVelocity = meMath.normalize(pos,speed);
         bodyDef.position.set(pos);
         this.body = SpaceWars.world.createBody(bodyDef);
-        this.bullet = new EasyCircle(1,0,0,1f,1f,body);
+        this.bullet = new EasyCircle(1,0,0,1f,0.1f,body);
+        System.out.println(this.body.getPosition());
+        this.angularVelocity = meMath.normalize(pos,speed);
+        this.body.applyForceToCenter(this.angularVelocity,false);
+
     }
 }
