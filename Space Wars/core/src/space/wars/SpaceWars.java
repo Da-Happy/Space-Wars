@@ -20,6 +20,7 @@ public class SpaceWars extends ApplicationAdapter {
 	OrthographicCamera camera = new OrthographicCamera();
 	private SpriteBatch batch;
 	private Texture red;
+	private Texture blue;
 	public SpaceShip ship;
 	public SpaceShip ship2;
 	public int ConstantOfGravity = 20;
@@ -33,7 +34,8 @@ public class SpaceWars extends ApplicationAdapter {
 		world = new World(new Vector2(0, 0), true);
 		world.setContactListener(new CollisionListener());
 		batch = new SpriteBatch();
-		red = new Texture("red.gif");
+		red = new Texture("red.png");
+		blue = new Texture("blue.png");
 		int centerX = round(camera.viewportWidth/2);
 		int centerY = round(camera.viewportHeight/2);
 		ship = new SpaceShip(centerX+centerX/2,centerY);
@@ -46,17 +48,12 @@ public class SpaceWars extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(red, ship.body.getPosition().x-8, ship.body.getPosition().y-6,red.getWidth()/2,red.getHeight()/2,red.getWidth()*2,red.getHeight()*2,1,1,ship.body.getAngle() * MathUtils.radiansToDegrees,0,0,32,32,false,true);
+		batch.draw(blue, ship2.body.getPosition().x-8, ship2.body.getPosition().y-6,blue.getWidth()/2,blue.getHeight()/2,blue.getWidth()*2,blue.getHeight()*2,1,1,ship2.body.getAngle() * MathUtils.radiansToDegrees,0,0,32,32,false,true);
 		batch.end();
 		fixedgunlol.shewt(ship,true);
 		moveit.move(ship,true);
 		fixedgunlol.shewt(ship2,false);
 		moveit.move(ship2,false);
-		if(overheat > 0){
-			overheat = overheat-1;
-		}
-		if(overheat2 > 0){
-			overheat2 = overheat2-1;
-		}
 		for (int i = 0; i < queue.size(); i++) {
 			world.destroyBody(queue.get(i));
 		}
@@ -69,7 +66,6 @@ public class SpaceWars extends ApplicationAdapter {
 			queue.add(ship2.body);
 			ship2.health = 100;
 		}
-		debugRenderer.render(world, camera.combined);
 	}
 
 	public void dispose () {
