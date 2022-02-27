@@ -18,6 +18,7 @@ public class Bullet {
         bodyDef.position.set(pos);
         this.body = SpaceWars.world.createBody(bodyDef);
         this.bullet = new EasyCircle(1,0,0,1f,1f,body);
+        SpaceWars.bullets.add(this);
     }
 
     public void removeFromPhysicsWorld() {
