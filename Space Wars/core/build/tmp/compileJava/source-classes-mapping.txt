@@ -4,14 +4,14 @@ space/wars/meMath.java
  space.wars.meMath
 space/wars/EasyBox.java
  space.wars.EasyBox
-space/wars/moveit.java
- space.wars.moveit
-space/wars/fixedgunlol.java
- space.wars.fixedgunlol
 space/wars/Bullet.java
  space.wars.Bullet
+space/wars/fixedgunlol.java
+ space.wars.fixedgunlol
 space/wars/CollisionListener.java
  space.wars.CollisionListener
+space/wars/moveit.java
+ space.wars.moveit
 space/wars/SpaceWars.java
  space.wars.SpaceWars
 space/wars/SpaceShip.java
