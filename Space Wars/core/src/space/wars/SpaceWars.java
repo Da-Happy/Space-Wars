@@ -51,8 +51,14 @@ public class SpaceWars extends ApplicationAdapter {
 		world.step(1/60f, 6, 2);
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		ship.render(batch);
-		ship2.render(batch);
+		for(int i = 1;i<3;i++){
+			if(i == 1 && ship.health > 0){
+				ship.render(batch)
+			} else if(i == 2 && ship2.health > 0){
+				ship2.render(batch);
+			}
+		}
+
 		for(int i = 0;i<bullets.size();i++){
 			batch.draw(buleet, bullets.get(i).body.getPosition().x-2,bullets.get(i).body.getPosition().y-2,buleet.getWidth()/2,buleet.getHeight()/2,buleet.getWidth()/2,buleet.getHeight()/2,1,1,0,0,0,8,8,false,true);
 		}
