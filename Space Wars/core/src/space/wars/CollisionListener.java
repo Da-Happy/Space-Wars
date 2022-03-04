@@ -11,11 +11,11 @@ public class CollisionListener implements ContactListener{
         if(fa.getUserData() == null || fa.getUserData() == null) return;
         if(fa.getBody().isBullet()){
             SpaceWars.queue.add(fa.getBody());
-            SpaceWars.bullets.remove(fa);
-        }
+            ((Bullet) fa.getBody().getUserData()).isalive = false;
+    }
         if(fb.getBody().isBullet()){
             SpaceWars.queue.add(fb.getBody());
-            SpaceWars.bullets.remove(fb);
+            ((Bullet) fb.getBody().getUserData()).isalive = false;
         }
         if(!fa.getBody().isBullet()){
             SpaceShip faShip = (SpaceShip) fa.getBody().getUserData();
