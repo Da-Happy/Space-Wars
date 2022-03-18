@@ -34,7 +34,7 @@ public class SpaceWars extends ApplicationAdapter {
 	public void create() {
 		queue = new ArrayList<>();
 		debugRenderer = new Box2DDebugRenderer(true, true, false, false, false, false);
-		camera.setToOrtho(true,800, 500);
+		camera.setToOrtho(true,80, 50);
 		world = new World(new Vector2(0, 0), true);
 		world.setContactListener(new CollisionListener());
 		batch = new SpriteBatch();
@@ -53,19 +53,22 @@ public class SpaceWars extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		if(ship.health < 99) {
-			batch.draw(red, ship.body.getPosition().x - 8, ship.body.getPosition().y - 8, red.getWidth() / 2, red.getHeight() / 2, red.getWidth() * 2, red.getHeight() * 2, 1, 1, ship.body.getAngle() * MathUtils.radiansToDegrees, 0, 0, 32, 32, false, true);
+			batch.draw(red, ship.body.getPosition().x - 8, ship.body.getPosition().y - 8, (float) (red.getWidth() / 2), (float) (red.getHeight() / 2), (float) (red.getWidth() * 2), (float) (red.getHeight() * 2), (float) 0.1, (float) 0.1, ship.body.getAngle() * MathUtils.radiansToDegrees, 0, 0, 32, 32, false, true);
 		}
 		if(ship2.health < 99) {
-			batch.draw(blue, ship2.body.getPosition().x - 8, ship2.body.getPosition().y - 8, blue.getWidth() / 2, blue.getHeight() / 2, blue.getWidth() * 2, blue.getHeight() * 2, 1, 1, ship2.body.getAngle() * MathUtils.radiansToDegrees, 0, 0, 32, 32, false, true);
+			batch.draw(blue, ship2.body.getPosition().x - 8, ship2.body.getPosition().y - 8, blue.getWidth() / 2, blue.getHeight() / 2, blue.getWidth() * 2, blue.getHeight() * 2, (float) 0.1, (float) 0.1, ship2.body.getAngle() * MathUtils.radiansToDegrees, 0, 0, 32, 32, false, true);
 		}
+		System.out.println(ship2.body.getLinearVelocity());
 		for(int i = 0;i<bullets.size();i++){
 			bullets.get(i).render(batch);
 		}
 		batch.end();
 		fixedgunlol.shewt(ship,true);
 		moveit.move(ship,true);
+		ship.body.setLinearVelocity(ship.body.getLinearVelocity().limit(10));
 		fixedgunlol.shewt(ship2,false);
 		moveit.move(ship2,false);
+		ship2.body.setLinearVelocity(ship2.body.getLinearVelocity().limit(10));
 		for (int i = 0; i < queue.size(); i++) {
 			world.destroyBody(queue.get(i));
 		}

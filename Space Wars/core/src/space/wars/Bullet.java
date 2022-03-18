@@ -23,12 +23,12 @@ public class Bullet {
         this.angularVelocity = meMath.normalize(direction,speed);
         bodyDef.position.set(pos);
         this.body = SpaceWars.world.createBody(bodyDef);
-        this.bullet = new EasyCircle(1,0,0,1f,1f,body);
+        this.bullet = new EasyCircle((float) 0.1,0,0,1f,1f,body);
         this.body.setUserData(this);
         SpaceWars.bullets.add(this);
     }
     public void render(Batch batch){
         if(this.isalive){
-        batch.draw(this.texture, this.body.getPosition().x-2,this.body.getPosition().y-2,this.texture.getWidth()/2,this.texture.getHeight()/2,this.texture.getWidth()/2,this.texture.getHeight()/2,1,1,0,0,0,8,8,false,true);
+        batch.draw(this.texture, (float) (this.body.getPosition().x-3.8), (float) (this.body.getPosition().y-3.8),this.texture.getWidth()/2,this.texture.getHeight()/2,this.texture.getWidth()/2,this.texture.getHeight()/2,(float) 0.1,(float) 0.1,0,0,0,8,8,false,true);
     }}
 }
