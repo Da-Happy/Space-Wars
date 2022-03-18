@@ -7,8 +7,10 @@ public class meMath {
         float x = vector2.x;
         float y = vector2.y;
         float sum = Math.abs(x)+Math.abs(y);
-        x = x/sum*mul;
-        y = y/sum*mul;
+        x = (x/sum);
+        y = (y/sum);
+        x*=mul;
+        y*=mul;
         return (new Vector2(x,y));
     }
 }

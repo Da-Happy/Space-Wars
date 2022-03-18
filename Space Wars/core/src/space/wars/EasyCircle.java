@@ -8,7 +8,7 @@ public class EasyCircle {
     public CircleShape shape = new CircleShape();
     public FixtureDef fixtureDef = new FixtureDef();
 
-    public EasyCircle(int radius, int x, int y, float density, float restitution, Body body) {
+    public EasyCircle(float radius, int x, int y, float density, float restitution, Body body) {
         Vector2 pos = new Vector2(x,y);
         this.shape.setRadius(radius);
         this.shape.setPosition(pos);
